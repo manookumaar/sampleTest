@@ -11,7 +11,7 @@ public class SharedPreferencesHelper {    // Keys for saving values in SharedPre
     public static final String KEY_NAME = "key_name";
     public static final String KEY_DOB = "key_dob_millis";
     public static final String KEY_EMAIL = "key_email";    // The injected SharedPreferences implementation to use for persistence.
-    private final SharedPreferences mSharedPreferences;
+    SharedPreferences mSharedPreferences;
 
     /**
      * Constructor with dependency injection.
@@ -23,29 +23,29 @@ public class SharedPreferencesHelper {    // Keys for saving values in SharedPre
     }
 
     /**
-     * Saves the given {@link SharedPreferenceEntry} that contains the user's settings to
+     * Saves the given {@link FormDataEntry} that contains the user's settings to
      * {@link SharedPreferences}.
      *
-     * @param sharedPreferenceEntry contains data to save to {@link SharedPreferences}.
+     * @param formDataEntry contains data to save to {@link SharedPreferences}.
      * @return {@code true} if writing to {@link SharedPreferences} succeeded. {@code false}
      * otherwise.
      */
-    public boolean savePersonalInfo(SharedPreferenceEntry sharedPreferenceEntry) {
+    public boolean savePersonalInfo(FormDataEntry formDataEntry) {
         // Start a SharedPreferences transaction.
         SharedPreferences.Editor editor = mSharedPreferences.edit();
-        editor.putString(KEY_NAME, sharedPreferenceEntry.getName());
-        editor.putLong(KEY_DOB, sharedPreferenceEntry.getDateOfBirth().getTimeInMillis());
-        editor.putString(KEY_EMAIL, sharedPreferenceEntry.getEmail());        // Commit changes to SharedPreferences.
+        editor.putString(KEY_NAME, formDataEntry.getName());
+        editor.putLong(KEY_DOB, formDataEntry.getDateOfBirth().getTimeInMillis());
+        editor.putString(KEY_EMAIL, formDataEntry.getEmail());        // Commit changes to SharedPreferences.
         return editor.commit();
     }
 
     /**
-     * Retrieves the {@link SharedPreferenceEntry} containing the user's personal information from
+     * Retrieves the {@link FormDataEntry} containing the user's personal information from
      * {@link SharedPreferences}.
      *
-     * @return the Retrieved {@link SharedPreferenceEntry}.
+     * @return the Retrieved {@link FormDataEntry}.
      */
-    public SharedPreferenceEntry getPersonalInfo() {
+    public FormDataEntry getPersonalInfo() {
         // Get data from the SharedPreferences.
         String name = mSharedPreferences.getString(KEY_NAME, "");
         Long dobMillis =
@@ -53,6 +53,6 @@ public class SharedPreferencesHelper {    // Keys for saving values in SharedPre
         Calendar dateOfBirth = Calendar.getInstance();
         dateOfBirth.setTimeInMillis(dobMillis);
         String email = mSharedPreferences.getString(KEY_EMAIL, "");        // Create and fill a SharedPreferenceEntry model object.
-        return new SharedPreferenceEntry(name, dateOfBirth, email);
+        return new FormDataEntry(name, dateOfBirth, email);
     }
 }
