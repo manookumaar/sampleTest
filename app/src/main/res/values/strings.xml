@@ -1,7 +1,7 @@
 <resources>
-    <string name="app_name">SignUPTest</string>
+    <string name="app_name">MyProfile-TestApp</string>
     <string name="title_activity_sign_up">SignUpActivity</string>
-    <string name="title_sign_up">SignUp</string>
+    <string name="title_sign_up">My Profile</string>
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
     <string name="action_sign_in">Sign in or register</string>
@@ -11,7 +11,7 @@
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
     <string name="name_label">Name</string>
-    <string name="name_hint">Name</string>
+    <string name="name_hint">First Name &amp; Last Name</string>
     <string name="dob_label">Date of birth</string>
     <string name="email_label">Email</string>
     <string name="email_hint">email@gm.com</string>

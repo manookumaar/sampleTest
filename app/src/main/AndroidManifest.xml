@@ -13,7 +13,7 @@
         android:theme="@style/Theme.SignUPTest"
         tools:targetApi="31">
         <activity
-            android:name=".SignUpActivity"
+            android:name=".MyProfileActivity"
             android:exported="true"
             android:label="@string/title_activity_sign_up">
             <intent-filter>
